@@ -1,4 +1,4 @@
-package pl.wojtek.morseflashlight
+package pl.wojtek.morseflashlight.ui.activity
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -13,19 +13,20 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.activity_main.navigationView;
 import kotlinx.android.synthetic.activity_main.drawer;
+import pl.wojtek.morseflashlight.R
 import pl.wojtek.morseflashlight.extension.find
+import pl.wojtek.morseflashlight.ui.fragments.MainFunctionalityFragment
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-
+    val fab by lazy{find<FloatingActionButton>(R.id.fab)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val fab = findViewById(R.id.fab) as FloatingActionButton
         fab.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
@@ -50,13 +51,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return super.onOptionsItemSelected(item)
+    override fun onResume() {
+        super.onResume()
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.main_content, MainFunctionalityFragment())
+                .commit()
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
