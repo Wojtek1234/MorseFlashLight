@@ -3,7 +3,6 @@ package pl.wojtek.morseflashlight.ui.activity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
-import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -13,13 +12,15 @@ import android.view.View
 import kotlinx.android.synthetic.activity_main.drawer
 import kotlinx.android.synthetic.activity_main.navigationView
 import pl.wojtek.morseflashlight.R
+import pl.wojtek.morseflashlight.controller.FlashController
 import pl.wojtek.morseflashlight.extension.find
 import pl.wojtek.morseflashlight.ui.fragments.MainFunctionalityFragment
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-    val fab by lazy{find<FloatingActionButton>(R.id.fab)}
+    val fab by lazy { find<FloatingActionButton>(R.id.fab) }
+    val flashControll by lazy{FlashController()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fab.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+                flashControll.doFlash()
             }
         })
 
@@ -79,4 +80,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
+
+
+    override fun onPause() {
+        super.onPause()
+
+    }
+
+
+
 }
