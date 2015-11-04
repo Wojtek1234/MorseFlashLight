@@ -18,9 +18,10 @@ import pl.wojtek.morseflashlight.ui.fragments.MainFunctionalityFragment
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
     val fab by lazy { find<FloatingActionButton>(R.id.fab) }
-    val flashControll by lazy{FlashController()}
+    val flashControl by lazy { FlashController() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fab.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                flashControll.doFlash()
+                flashControl.doFlash()
             }
         })
 
@@ -86,7 +87,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onPause()
 
     }
-
 
 
 }

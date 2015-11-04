@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 
 import pl.wojtek.morseflashlight.R
+import pl.wojtek.morseflashlight.controller.FlashController
+import pl.wojtek.morseflashlight.ui.fragments.common.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class MainFunctionalityFragment : Fragment() {
+class MainFunctionalityFragment : BaseFragment() {
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -21,5 +24,10 @@ class MainFunctionalityFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main_functionality, container, false)
     }
 
+
+
+    override fun doOnFlash(flashController: FlashController) {
+        throw UnsupportedOperationException()
+    }
 
 }// Required empty public constructor

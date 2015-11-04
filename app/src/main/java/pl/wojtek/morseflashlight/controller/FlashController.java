@@ -10,6 +10,7 @@ public class FlashController {
     private Camera camera;
     private boolean isLightning =false;
 
+
     public void doFlash(){
         if(isLightning)flashOf();
         else flash();
