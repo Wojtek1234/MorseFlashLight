@@ -27,9 +27,13 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile "com.android.support:appcompat-v7:$design_version"
+    compile "com.android.support:recyclerview-v7:$design_version"
+
     compile "com.android.support:design:$design_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxkotlin:0.24.100'
 
 
 
